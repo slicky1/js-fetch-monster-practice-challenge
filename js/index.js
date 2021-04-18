@@ -1,29 +1,15 @@
-// Attribution(s) below:
-
-// Global constants and variables declaration
 const BASE_URL = "http://localhost:3000/";
 let curPage = 1;
 
-// Function Calls
 getMonsters(curPage).then(showMonsters);
 createMonsterForm();
 addNavListeners();
 
-// 1. Get the relevant data
-// http://localhost:3000/monsters/?_limit=50&_page=1
 function getMonsters(page) {
     return fetch(BASE_URL + `monsters/?_limit=50&_page=${page}`)
     .then(r => r.json());
 }
 
-// 2. Create a component with the data
-/*
-<div>
-  <h2>Monster Name</h2>
-  <h3>Monster Age</h3>
-  <p>Monster description</p>
-</div> 
-*/
 
 function createMonsterDiv(monster) {
     const div = document.createElement('div');
@@ -39,16 +25,6 @@ function createMonsterDiv(monster) {
     return div;
 }
 
-// 3. Append the component to the DOM
-/*
-<div id='monster-container'>
-  <div>
-    <h2>Monster Name</h2>
-    <h3>Monster Age</h3>
-    <p>Monster description</p>
-  </div>
-</div>
-*/
 const testMonsterObj = {
     "name": "Chronos",
     "age": 4005.302453418598,
@@ -96,8 +72,6 @@ const testMonstersArray = [
     }
 ];
 
-// showMonsters(testMonstersArray);
-// const monsters = getMonsterData(1).then( monsters => ShowMonsters())
 
 function createMonsterForm() {
     const form = document.createElement('form'),
@@ -157,10 +131,7 @@ function postMonster(monster) {
 
 function clearForm() {
     document.querySelector('#monster-form').reset();
-}
-
-
-// OBJECTIVE 3: Control page using the buttons 
+} 
 
 function addNavListeners() {
     let backBtn = document.querySelector('#back'),
@@ -187,10 +158,3 @@ function prevPage() {
         getMonsters(curPage).then(showMonsters);
     }
 }
-
-/*
-Attribution:
-Thanks Alvee!
-This was the in-class solution presented by the instructor Alvee:
-https://github.com/AlveeM/js-fetch-monster-practice-challenge
-*/
